@@ -10,4 +10,8 @@ const Router = ():void =>{
         PublicDashboard(viewPublic, userController); 
     }
 }
+
+export function NavigationTo(path:string){
+    window.history.pushState({}, "", window.location.origin + path);
+}
 export default Router;

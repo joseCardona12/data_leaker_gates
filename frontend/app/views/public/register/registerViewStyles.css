@@ -1,0 +1,8 @@
+form.form{
+    width: 60%;
+    margin:  0 auto;
+}
+
+form.form fieldset{
+    margin-bottom: 10px;
+}
