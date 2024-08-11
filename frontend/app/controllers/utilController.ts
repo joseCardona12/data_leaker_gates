@@ -5,10 +5,15 @@ export default class UtilController{
 
     static async fetchApi(url:string, options:{}):Promise<object | undefined>{
         try{
-            const data = await fetch(url,options);
-            return data.json();
+            const response = await fetch(url,options);
+            if(!response.ok){
+                throw new Error("Error with the response fetch")
+            }
+            const data = await response.json();
+            return data;
         }catch(error){
-            console.log({message: "Errro to use fetchApi", error: error})
+            console.log({message: "Errro to use fetchApi", error: error});
+            return undefined;
         }
     }
 }

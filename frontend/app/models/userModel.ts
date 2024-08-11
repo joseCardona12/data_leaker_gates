@@ -1,30 +1,34 @@
 import UtilController from "../controllers/utilController";
 
 export default class User{
-    private name: string;
-    private email: string;
-    private password: string;
-    private role_id: number;
-    constructor(name: string, email: string, password: string, role_id: number){
-        this.name = name,
-        this.email = email,
-        this.password = password,
-        this.role_id = role_id
-    }
-    async registerUser(){
-        const url: string = "http://localhost:3060/api/users";
+    static async registerUser(name:string,email: string, password: string, role_id:number):Promise<object | undefined>{
+        const url: string = "http://localhost:3060/api/auth/register";
         const data: object | undefined = await UtilController.fetchApi(url, {
             method: "POST",
             headers: {
                 "content-Type": "application/json"
             },
             body: JSON.stringify({
-                name: this.name,
-                email: this.email,
-                password: this.password,
-                role_id: this.role_id
+                name: name,
+                email: email,
+                password: password,
+                role_id: role_id
             })
         });
+        return data;
+    }
+    static async loginUser(email:string, password: string): Promise<object | undefined>{
+        const url: string = "http://localhost:3060/api/auth/login";
+        const data: object | undefined = await UtilController.fetchApi(url,{
+            method: "POST",
+            headers: {
+                "content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        })
         return data;
     }
 }

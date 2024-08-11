@@ -1,4 +1,4 @@
-const PublicDashboard = (viewPublic: string, userController: ()=>void): void =>{
+const DashboardPublic = (viewPublic: string, userController: ()=>void): void =>{
     const root: HTMLElement | null = document.getElementById("root");
     root!.innerHTML = 
     `
@@ -10,4 +10,4 @@ const PublicDashboard = (viewPublic: string, userController: ()=>void): void =>{
     userController()
 }
 
-export default PublicDashboard;
+export default DashboardPublic;

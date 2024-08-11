@@ -1,7 +1,7 @@
 import UserController from "../../../controllers/userController";
 import "./registerViewStyles.css";
 
-const RegisterView = (): {viewPublic: string, userController: typeof UserController.register} =>{
+const RegisterView = (): {viewPublic: string, controllerPublic: typeof UserController.register} =>{
     const viewPublic: string = 
     `
         <form class="form" id="form-register">
@@ -29,11 +29,11 @@ const RegisterView = (): {viewPublic: string, userController: typeof UserControl
         </form>
     `;
 
-    const userController = UserController.register
+    const controllerPublic = UserController.register
 
     return {
         viewPublic,
-        userController
+        controllerPublic
     };
 }
 
