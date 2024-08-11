@@ -1,7 +1,13 @@
 import { Sequelize } from "sequelize-typescript";
 import { configDotenv } from "dotenv";
-import UserModel from "../models/userModel";
 import Role from "../models/roleModel";
+import Cart from "../models/cartModel";
+import Product from "../models/productModel";
+import ProductCart from "../models/productCartModel";
+import Order from "../models/orderModel";
+import User from "../models/userModel";
+import Permission from "../models/permissionModel";
+import Entity from "../models/entityModel";
 configDotenv();
 
 const sequelize: Sequelize = new Sequelize({
@@ -11,7 +17,7 @@ const sequelize: Sequelize = new Sequelize({
     username: process.env.DB_USER!,
     password: process.env.DB_PASSWORD!,
     database: process.env.DB_DATABASE_NAME!,
-    models: [UserModel, Role]
+    models: [User, Role, Cart, Product, ProductCart, Order, Permission, Entity]
 });
 
 export default sequelize;

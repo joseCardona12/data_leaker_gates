@@ -20,6 +20,12 @@ const Router = ():void =>{
     }
     if(path === "/dashboard/home-admin" && localStorage.getItem("role") === "2"){
         NavigationTo("/dashboard/home-user");
+        console.log({message: "Not authorized"});
+        return;
+    }
+    if(path === "/dashboard/home-user" && localStorage.getItem("role") === "1"){
+        NavigationTo("/dashboard/home-admin");
+        console.log({message: "Not authorized"});
         return;
     }
     if(publicRoute){

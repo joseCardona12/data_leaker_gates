@@ -1,6 +1,7 @@
-import { AutoIncrement, BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AutoIncrement, BelongsTo, Column, DataType, ForeignKey, HasMany, HasOne, Model, PrimaryKey, Table } from "sequelize-typescript";
 import Role from "./roleModel";
-
+import Cart from "./cartModel";
+import Order from "./orderModel";
 @Table({
     tableName: "users",
     timestamps: false
@@ -40,4 +41,10 @@ export default class User extends Model{
 
     @BelongsTo(()=>Role)
     role!:Role;
+
+    @HasOne(()=>Cart)
+    cart!:Cart;
+
+    @HasMany(()=>Order)
+    orders!: Order;
 }
